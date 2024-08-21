@@ -1,0 +1,29 @@
+.card_box {
+    border: 1px solid gray;
+    width: 300px;
+    margin: 20px;
+    float: left;
+    text-align: center;
+    padding: 10px;
+}
+
+.card_box img {
+    border-radius: 50%;
+}
+
+.card_box button {
+    cursor: pointer;
+    width: 200px;
+    height: 60px;
+    background-color: blue;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 700;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+    border: none;
+}
+
+.card_box button:active {
+    background-color: gray;
+}

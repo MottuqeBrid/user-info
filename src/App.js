@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import User from './components/User/User';
+import Cart from './components/Cart/Cart';
+import userData from './data/user-data.json';
 
 function App() {
+  const [user, setUser] = useState(userData);
+  const [cart, setCart] = useState([]);
+  // console.log(user)
+  const addEventHandler = (user) => {
+    const newCart = [...cart, user];
+    setCart(newCart);
+  }
+  let total = 0;
+  for (let i = 0; i < cart.length; i++) {
+    const user = cart[i];
+    total = total + user.salary;
+  }
+  // console.log(total)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 style={{ textAlign: 'center', fontSize: '50px' }}>User Information</h1>
+      <Cart totalSalary={total}></Cart>
+      {
+        user.map(usr => <User key={usr.id} user={usr} addEventHandler={addEventHandler}></User>)
+      }
     </div>
   );
 }
